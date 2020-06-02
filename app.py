@@ -27,6 +27,9 @@ def main():
     
     df = load_data()
 
+    if st.sidebar.checkbox("Show raw Data", False):
+        st.subheader("Mushroom Data set Classification")
+        st.write(df)
 
 
 if __name__ == '__main__':
