@@ -25,8 +25,16 @@ def main():
             data[col] = label.fit_transform(data[col])    
         return data
     
+    @st.cache(persist=True)
+    def split(df):
+        y = df.type
+        x = df.drop(columns = ['type'])
+        x_train , x_test,y_train,y_test = train_test_split(x,y,test_size = 0.3,random_state=0)
+        return x_train , x_test,y_train,y_test
+    
     df = load_data()
-
+    x_train , x_test,y_train,y_test = split(df)
+    
     if st.sidebar.checkbox("Show raw Data", False):
         st.subheader("Mushroom Data set Classification")
         st.write(df)
