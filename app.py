@@ -11,7 +11,7 @@ from sklearn.metrics import precision_score , recall_score
 
 def main():
     st.title("Binary Classification Web Application")
-    st.sidebar("Binary Classification Web App")
+    st.sidebar.title("Binary Classification Web App")
     st.markdown("Are your Mushroom Edible or Poisonous")
     st.sidebar.markdown("Are your Mushroom Edible or Poisonous")
     
