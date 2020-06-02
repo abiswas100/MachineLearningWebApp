@@ -51,7 +51,8 @@ def main():
     df = load_data()
     x_train , x_test,y_train,y_test = split(df)
     class_names = ['edible','poisonous']
-    
+    st.sidebar.subheader("Choose Classfier")
+    classfier = st.sidebar.selectbox("Classfier","Support Vector Machine (SVM),Logistic Regression,Random Forest Classifer")
     
     
     
@@ -59,7 +60,7 @@ def main():
     if st.sidebar.checkbox("Show raw Data", False):
         st.subheader("Mushroom Data set Classification")
         st.write(df)
-
+        
 
 if __name__ == '__main__':
     main()
