@@ -63,22 +63,22 @@ def main():
 
         metrics = st.sidebar.multiselect("What metrics do you want to plot",('Confusion Matrix', 'ROC Curve','Precision Recall Curve'))
     
-        if st.sidebar.button("Classify", key='classify')
-        st.subheader("Support Vector Machine(SVM) Results")
-        
-        model = SVC(C = C, kernel=kernel , gamma=gamma)
-        model.fit(x-train ,y_train)
-        
-        accuracy = model.score(x_test,y_test)
-        
-        y_pred = model.predict(x_test)
-
-        st.write("Accuracy :  ", accuracy.round(2))            
-        st.write("Precision : ", precision_score(y_test , y_pred, labels = class_names).round(2)) 
-        st.write("Recall : ", recall_score(y_test , y_pred, labels = class_names).round(2))
-         
-        plot_metrics(metrics)
+        if st.sidebar.button("Classify", key='classify'):
+            st.subheader("Support Vector Machine(SVM) Results")
             
+            model = SVC(C = C, kernel=kernel , gamma=gamma)
+            model.fit(x-train ,y_train)
+            
+            accuracy = model.score(x_test,y_test)
+            
+            y_pred = model.predict(x_test)
+
+            st.write("Accuracy :  ", accuracy.round(2))            
+            st.write("Precision : ", precision_score(y_test , y_pred, labels = class_names).round(2)) 
+            st.write("Recall : ", recall_score(y_test , y_pred, labels = class_names).round(2))
+            
+            plot_metrics(metrics)
+                
             
             
             
