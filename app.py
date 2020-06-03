@@ -52,7 +52,7 @@ def main():
     x_train , x_test,y_train,y_test = split(df)
     class_names = ['edible','poisonous']
     st.sidebar.subheader("Choose Classfier")
-    classfier = st.sidebar.selectbox("Classfier","Support Vector Machine (SVM),Logistic Regression,Random Forest Classifer")
+    classfier = st.sidebar.selectbox("Classfier",("Support Vector Machine (SVM)","Logistic Regression","Random Forest Classifer"))
     
     
     
