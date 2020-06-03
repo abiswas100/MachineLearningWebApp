@@ -67,7 +67,7 @@ def main():
             st.subheader("Support Vector Machine(SVM) Results")
             
             model = SVC(C = C, kernel=kernel , gamma=gamma)
-            model.fit(x-train ,y_train)
+            model.fit(x_train ,y_train)
             
             accuracy = model.score(x_test,y_test)
             
