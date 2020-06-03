@@ -53,9 +53,15 @@ def main():
     x_train , x_test,y_train,y_test = split(df)
     class_names = ['edible','poisonous']
     st.sidebar.subheader("Choose Classfier")
-    classfier = st.sidebar.selectbox("Classfier",("Support Vector Machine (SVM)","Logistic Regression","Random Forest Classifer"))
+    classfier = st.sidebar.selectbox("Classfiers",("Support Vector Machine (SVM)","Logistic Regression","Random Forest Classifer"))
     
-    
+    if classfier == "Support Vector Machine (SVM)":
+        st.sidebar.subheader("Model Hyper-Parameters")
+        C = st.sidebar.number_input("C (Regularization Parameter)",0.01,10.00,step = 0.01, key = 'C')
+        kernel = st.sidebar.radio("kernel",("rbf","linear"), key = 'kernel')
+        gamma = st.sidebar.radio("Gamma (kernel Coefficient)",("scale","auto"), key = 'gamma')
+
+        
     
     
     if st.sidebar.checkbox("Show raw Data", False):
