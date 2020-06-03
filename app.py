@@ -34,19 +34,19 @@ def main():
         return x_train , x_test,y_train,y_test
     
     def plot_metrics(metrics_list):
-        if 'confusion Matrix' in metrics_list:
+        if 'Confusion Matrix' in metrics_list:
             st.subheader('Confusion Matrix')
             plot_confusion_matrix(model, x_test,y_test, display_labels=class_names)
             st.pyplot()
         
-        if 'confusion Matrix' in metrics_list:
-            st.subheader('Confusion Matrix')
-            plot_confusion_matrix(model, x_test,y_test, display_labels=class_names)
+        if 'ROC Curve' in metrics_list:
+            st.subheader('ROC Curve')
+            plot_roc_curve(model, x_test,y_test)
             st.pyplot()
         
-        if 'confusion Matrix' in metrics_list:
-            st.subheader('Confusion Matrix')
-            plot_confusion_matrix(model, x_test,y_test, display_labels=class_names)
+        if 'Precision Recall Curve' in metrics_list:
+            st.subheader('Precision Recall Curve')
+            plot_precision_recall_curve(model, x_test,y_test)
             st.pyplot()
     
     df = load_data()
@@ -116,7 +116,7 @@ def main():
         if st.sidebar.button("Classify", key='classify'):
             st.subheader("Random Forest Classifier Results")
             
-            model = RandomForestClassifier(n_estimator = n_estimators, max_depth = max_depth, bootstrap = bootstrap,n_jobs = -1)
+            model = RandomForestClassifier(n_estimators = n_estimators, max_depth = max_depth, bootstrap = bootstrap,n_jobs = -1)
             model.fit(x_train ,y_train)
             
             accuracy = model.score(x_test,y_test)
