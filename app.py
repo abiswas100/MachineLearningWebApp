@@ -103,7 +103,31 @@ def main():
             
             plot_metrics(metrics)
             
+         
+    if classfier == "Random Forest Classifer":
+        st.sidebar.subheader("Model Hyper-Parameters")
+        
+        n_estimators = st.sidebar.number_input("The number of trees in the forest", 100,5000 ,step = 10, key = 'n_estimator')
+        max_depth = st.sidebar.number_input("The maximum depth of the forest", 1,20 ,step = 1, key = 'max_depth')
+        bootstrap = st.sidebar.radio("Bootstrap samples when building trees",('True','False'),key = 'bootstrap')
+                
+        metrics = st.sidebar.multiselect("What metrics do you want to plot",('Confusion Matrix', 'ROC Curve','Precision Recall Curve'))
+    
+        if st.sidebar.button("Classify", key='classify'):
+            st.subheader("Random Forest Classifier Results")
             
+            model = RandomForestClassifier(n_estimator = n_estimators, max_depth = max_depth, bootstrap = bootstrap,n_jobs = -1)
+            model.fit(x_train ,y_train)
+            
+            accuracy = model.score(x_test,y_test)
+            
+            y_pred = model.predict(x_test)
+
+            st.write("Accuracy :  ", accuracy.round(2))            
+            st.write("Precision : ", precision_score(y_test , y_pred, labels = class_names).round(2)) 
+            st.write("Recall : ", recall_score(y_test , y_pred, labels = class_names).round(2))
+            
+            plot_metrics(metrics)   
             
     if st.sidebar.checkbox("Show raw Data", False):
         st.subheader("Mushroom Data set Classification")
